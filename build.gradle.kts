@@ -38,7 +38,13 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
 
-publishing { publications { create<MavenPublication>("maven") { from(components["java"]) } } }
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
 
 tasks {
     java {
@@ -65,6 +71,4 @@ tasks {
     }
 }
 
-kotlin {
-    jvmToolchain(17)
-}
+kotlin { jvmToolchain(17) }
