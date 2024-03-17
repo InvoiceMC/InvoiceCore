@@ -1,11 +1,10 @@
 package me.outspending.invoice.core.helpers
 
+import me.outspending.invoice.core.InvoiceCore
 import me.outspending.invoice.core.config.ConfigValues
-import me.outspending.invoice.core.core
 import me.outspending.invoice.core.helpers.FormatHelper.Companion.chatcolorResolver
 import me.outspending.invoice.core.helpers.FormatHelper.Companion.mainColorResolver
 import me.outspending.invoice.core.helpers.FormatHelper.Companion.secondColorResolver
-import me.outspending.invoice.core.parse
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextColor
@@ -153,7 +152,7 @@ class FormatHelper {
                 val uuidString = args.popOr("uuid expected").value()
                 val uuid = UUID.fromString(uuidString)
                 val player =
-                    core.server.getPlayer(uuid) ?: throw IllegalArgumentException("Player $uuidString not found")
+                    InvoiceCore.instance.server.getPlayer(uuid) ?: throw IllegalArgumentException("Player $uuidString not found")
 
                 val color = NamedTextColor.GRAY // TODO: Get the player's chatcolor for real
                 Tag.styling(TextColor.color(color.red(), color.green(), color.blue()))

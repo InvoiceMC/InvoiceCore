@@ -1,8 +1,5 @@
 package me.outspending.invoice.core.listeners.types
 
-import com.github.shynixn.mccoroutine.bukkit.launch
-import kotlinx.coroutines.Dispatchers
-import me.outspending.invoice.core.core
 import me.outspending.invoice.core.parse
 import me.outspending.invoice.core.scoreboard.ScoreboardHandler
 import net.kyori.adventure.title.Title
@@ -11,7 +8,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerLevelChangeEvent
-import org.bukkit.event.player.PlayerLoginEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType

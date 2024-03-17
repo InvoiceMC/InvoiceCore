@@ -4,7 +4,7 @@ import com.github.shynixn.mccoroutine.bukkit.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import me.outspending.invoice.core.core
+import me.outspending.invoice.core.InvoiceCore
 import me.outspending.invoice.core.data.DataManager
 import me.outspending.invoice.core.data.database
 import me.outspending.invoice.core.parse
@@ -57,7 +57,7 @@ class PlayerDataManager : DataManager<Player, PlayerData>() {
     }
 
     override fun saveAllData() {
-        core.launch {
+        InvoiceCore.instance.launch {
             val allData = data.values.toList()
             val time = measureTime {
                 async(Dispatchers.IO) { database.updateAllData(munchPlayerData, allData) }.await()
@@ -71,7 +71,7 @@ class PlayerDataManager : DataManager<Player, PlayerData>() {
         if (!data.containsKey(key)) return
 
         val playerData: PlayerData = getData(key)
-        core.launch {
+        InvoiceCore.instance.launch {
             async(Dispatchers.IO) { persistenceHandler.save(key.uniqueId, playerData) }.await()
         }
     }
@@ -81,7 +81,7 @@ class PlayerDataManager : DataManager<Player, PlayerData>() {
 
         val playerData: PlayerData? = removeData(key)
         if (playerData != null) {
-            core.launch {
+            InvoiceCore.instance.launch {
                 async(Dispatchers.IO) { persistenceHandler.save(key.uniqueId, playerData) }.await()
             }
         }

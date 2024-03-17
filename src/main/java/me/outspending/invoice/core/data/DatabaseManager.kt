@@ -1,6 +1,6 @@
 package me.outspending.invoice.core.data
 
-import me.outspending.invoice.core.core
+import me.outspending.invoice.core.InvoiceCore
 import me.outspending.invoice.core.interfaces.Startable
 import me.outspending.invoice.core.interfaces.Stopable
 import me.outspending.munch.connection.MunchConnection
@@ -11,7 +11,7 @@ val database = MunchConnection.global()
 
 class DatabaseManager : Startable, Stopable {
     override fun start() {
-        val dataFolder = core.dataFolder
+        val dataFolder = InvoiceCore.instance.dataFolder
         if (!dataFolder.exists()) dataFolder.mkdirs()
 
         database.connect(dataFolder, DATABASE_NAME)

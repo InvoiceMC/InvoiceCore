@@ -1,7 +1,7 @@
 package me.outspending.invoice.core.listeners
 
 import com.github.shynixn.mccoroutine.bukkit.registerSuspendingEvents
-import me.outspending.invoice.core.core
+import me.outspending.invoice.core.InvoiceCore
 import me.outspending.invoice.core.data.player.PlayerDataListeners
 import me.outspending.invoice.core.interfaces.Registrable
 import me.outspending.invoice.core.listeners.types.ChatListeners
@@ -11,13 +11,14 @@ import me.outspending.invoice.core.listeners.types.PlayerListeners
 
 class ListenerRegistry : Registrable {
     override fun register(vararg packages: String) {
-        val pluginManager = core.server.pluginManager
+        val instance = InvoiceCore.instance
+        val pluginManager = instance.server.pluginManager
 
-        pluginManager.registerEvents(ChatListeners(), core)
-        pluginManager.registerEvents(CommandListeners(), core)
-        pluginManager.registerEvents(MiscListeners(), core)
+        pluginManager.registerEvents(ChatListeners(), instance)
+        pluginManager.registerEvents(CommandListeners(), instance)
+        pluginManager.registerEvents(MiscListeners(), instance)
 
-        pluginManager.registerSuspendingEvents(PlayerDataListeners(), core)
-        pluginManager.registerEvents(PlayerListeners(), core)
+        pluginManager.registerSuspendingEvents(PlayerDataListeners(), instance)
+        pluginManager.registerEvents(PlayerListeners(), instance)
     }
 }

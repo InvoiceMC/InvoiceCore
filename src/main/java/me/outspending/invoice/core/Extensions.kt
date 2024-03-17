@@ -29,21 +29,21 @@ fun Number.toTiny(): String = numberHelper.toTinyNumbers(this)
 
 fun Location.center(): Location = this.clone().add(0.5, 0.5, 0.5)
 
-inline fun delay(delay: Long, crossinline block: () -> Unit) = scheduler.runTaskLater(core, Runnable { block() }, delay)
+inline fun delay(delay: Long, crossinline block: () -> Unit) = scheduler.runTaskLater(InvoiceCore.instance, Runnable { block() }, delay)
 inline fun repeat(delay: Long, period: Long, crossinline block: () -> Unit) =
-    scheduler.runTaskTimer(core, Runnable { block() }, delay, period)
+    scheduler.runTaskTimer(InvoiceCore.instance, Runnable { block() }, delay, period)
 
 inline fun runTask(runAsync: Boolean = false, crossinline block: () -> Unit) =
-    if (runAsync) scheduler.runTaskAsynchronously(core, Runnable { block() })
-    else scheduler.runTask(core, Runnable { block() })
+    if (runAsync) scheduler.runTaskAsynchronously(InvoiceCore.instance, Runnable { block() })
+    else scheduler.runTask(InvoiceCore.instance, Runnable { block() })
 
 inline fun runTaskLater(delay: Long, runAsync: Boolean = false, crossinline block: () -> Unit) =
-    if (runAsync) scheduler.runTaskLaterAsynchronously(core, Runnable { block() }, delay)
-    else scheduler.runTaskLater(core, Runnable { block() }, delay)
+    if (runAsync) scheduler.runTaskLaterAsynchronously(InvoiceCore.instance, Runnable { block() }, delay)
+    else scheduler.runTaskLater(InvoiceCore.instance, Runnable { block() }, delay)
 
 inline fun runTaskTimer(delay: Long, period: Long, runAsync: Boolean = false, crossinline block: () -> Unit) =
-    if (runAsync) scheduler.runTaskTimerAsynchronously(core, Runnable { block() }, delay, period)
-    else scheduler.runTaskTimer(core, Runnable { block() }, delay, period)
+    if (runAsync) scheduler.runTaskTimerAsynchronously(InvoiceCore.instance, Runnable { block() }, delay, period)
+    else scheduler.runTaskTimer(InvoiceCore.instance, Runnable { block() }, delay, period)
 
 fun progressBar(number: Number, max: Number = 100, bars: Int = 25, separator: String = "|", completedColor: String = "<green>", notCompletedColor: String = "<red>") =
     numberHelper.toBar(number, max, bars, separator, completedColor, notCompletedColor)
