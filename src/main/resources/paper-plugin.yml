@@ -1,0 +1,4 @@
+name: InvoiceCore
+version: '0.0.1'
+main: me.outspending.invoice.core.InvoiceCore
+api-version: '1.20'
