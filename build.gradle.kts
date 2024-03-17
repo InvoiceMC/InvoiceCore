@@ -1,11 +1,11 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
+
     kotlin("jvm") version "2.0.0-Beta4"
     `maven-publish`
-    java
 }
 
-group = "me.outspending"
+group = "org.github.invoicemc"
 version = "0.0.1"
 
 repositories {
@@ -41,6 +41,11 @@ dependencies {
 publishing { publications { create<MavenPublication>("maven") { from(components["java"]) } } }
 
 tasks {
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
     wrapper {
         gradleVersion = "8.6"
         distributionType = Wrapper.DistributionType.ALL
