@@ -5,6 +5,8 @@ plugins {
     `maven-publish`
 }
 
+apply(plugin = "maven-publish")
+
 group = "org.github.invoicemc"
 version = "0.0.1"
 
@@ -53,7 +55,7 @@ tasks {
     }
 
     wrapper {
-        gradleVersion = "8.6"
+        gradleVersion = "8.5"
         distributionType = Wrapper.DistributionType.ALL
     }
 
