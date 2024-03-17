@@ -8,7 +8,7 @@ import me.outspending.invoice.core.data.player.getDataNullable
 import net.kyori.adventure.text.Component
 import org.bukkit.entity.Player
 
-private val updatableLines: Array<Int> = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+private val updatableLines: Array<Int> = arrayOf(3, 4, 5, 8, 9, 10)
 
 private val scoreboardTitle: Component = "<main><b>ɪɴᴠᴏɪᴄᴇ</b>".parse()
 private val scoreboardString: Array<String> =
