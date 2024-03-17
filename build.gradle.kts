@@ -1,7 +1,7 @@
 plugins {
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-
+    // id("com.github.johnrengelman.shadow") version "8.1.1"
     kotlin("jvm") version "2.0.0-Beta4"
+
     `maven-publish`
 }
 
@@ -12,6 +12,7 @@ version = "0.0.1"
 
 repositories {
     mavenCentral()
+
     maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
     maven { url = uri("https://oss.sonatype.org/content/groups/public/") }
     maven { url = uri("https://repo.codemc.io/repository/maven-public/") }
@@ -55,22 +56,22 @@ tasks {
     }
 
     wrapper {
-        gradleVersion = "8.5"
+        gradleVersion = "8.6"
         distributionType = Wrapper.DistributionType.ALL
     }
 
-    shadowJar {
-        archiveFileName.set("${project.name}.jar")
-
-        // Relocations
-        val relocationPath = "me.outspending.core.invoice.relocations"
-
-        relocate("org.github.shynixn.mccoroutine", "$relocationPath.mccoroutine")
-        relocate("dev.dejvokep.boostedyaml", "$relocationPath.boostedyaml")
-        relocate("fr.mrmicky.fastboard", "$relocationPath.fastboard")
-
-        destinationDirectory.set(file("E:\\Servers\\Testing\\plugins"))
-    }
+//    shadowJar {
+//        archiveFileName.set("${project.name}.jar")
+//
+//        // Relocations
+//        val relocationPath = "me.outspending.core.invoice.relocations"
+//
+//        relocate("org.github.shynixn.mccoroutine", "$relocationPath.mccoroutine")
+//        relocate("dev.dejvokep.boostedyaml", "$relocationPath.boostedyaml")
+//        relocate("fr.mrmicky.fastboard", "$relocationPath.fastboard")
+//
+//        destinationDirectory.set(file("E:\\Servers\\Testing\\plugins"))
+//    }
 }
 
 kotlin { jvmToolchain(17) }
